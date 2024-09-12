@@ -8,11 +8,10 @@
     <depends>com.intellij.database</depends>
 
     <extensions defaultExtensionNs="com.intellij.database">
+        <!--suppress PluginXmlValidity -->
         <connectionInterceptor implementation="com.github.snuxoll.intellij.azuredbauth.database.AzureAuthProvider"
                                order="first"/>
     </extensions>
-
-    <extensions defaultExtensionNs="com.intellij"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable
