@@ -14,8 +14,7 @@ import javax.swing.JPanel
 
 sealed class CredentialPanel(
     layoutManager: GridLayoutManager = GridLayoutManager(2, 2)
-) : JPanel(layoutManager) {
-}
+) : JPanel(layoutManager)
 
 sealed class UsernameCredentialPanel(
     usernameProperty: AtomicProperty<String>
@@ -36,22 +35,16 @@ sealed class UsernameCredentialPanel(
 
 class DefaultCredentialPanel(
     usernameProperty: AtomicProperty<String>
-) : UsernameCredentialPanel(usernameProperty) {
-
-}
+) : UsernameCredentialPanel(usernameProperty)
 
 class AzureCLICredentialPanel(
     usernameProperty: AtomicProperty<String>
-) : UsernameCredentialPanel(usernameProperty) {
+) : UsernameCredentialPanel(usernameProperty)
 
-}
+class InteractiveCredentialPanel(
+    usernameProperty: AtomicProperty<String>
+) : UsernameCredentialPanel(usernameProperty)
 
-class ManagedIdentityCredentialPanel(
-) : CredentialPanel() {
+class ManagedIdentityCredentialPanel : CredentialPanel()
 
-}
-
-class ServicePrincipalCredentialPanel(
-) : CredentialPanel() {
-
-}
+class ServicePrincipalCredentialPanel : CredentialPanel()

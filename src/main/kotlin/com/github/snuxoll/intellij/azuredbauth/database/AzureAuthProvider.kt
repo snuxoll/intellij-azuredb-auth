@@ -45,6 +45,10 @@ class AzureAuthProvider : DatabaseAuthProvider {
         return true
     }
 
+    fun clearCredentials(connectionPoint: DatabaseConnectionPoint) {
+        credentials.remove(connectionPoint.dataSource.uniqueId)
+    }
+
     private fun getCredentials(
         connectionPoint: DatabaseConnectionPoint,
         authType: AuthType
@@ -53,9 +57,18 @@ class AzureAuthProvider : DatabaseAuthProvider {
         return when (authType) {
             AuthType.DEFAULT -> getDefaultAzureCredentials(connectionPoint)
             AuthType.AZURE_CLI -> getAzureCLICredentials(connectionPoint)
+            AuthType.INTERACTIVE -> getInteractiveCredentials(connectionPoint)
             AuthType.MANAGED_IDENTITY -> getManagedIdentityCredentials(connectionPoint)
             AuthType.SERVICE_PRINCIPAL -> getServicePrincipalCredentials(connectionPoint)
         }
+    }
+
+    private fun getInteractiveCredentials(connectionPoint: DatabaseConnectionPoint): InteractiveBrowserCredential {
+        val connectionId = connectionPoint.dataSource.uniqueId
+        return credentials[connectionId] as? InteractiveBrowserCredential
+            ?: InteractiveBrowserCredentialBuilder().build().also {
+                credentials[connectionId] = it
+            }
     }
 
     private fun getAzureCLICredentials(connectionPoint: DatabaseConnectionPoint): AzureCliCredential {

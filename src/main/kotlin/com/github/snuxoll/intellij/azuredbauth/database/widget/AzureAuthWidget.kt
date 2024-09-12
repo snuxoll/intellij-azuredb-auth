@@ -3,6 +3,7 @@ package com.github.snuxoll.intellij.azuredbauth.database.widget
 import com.github.snuxoll.intellij.azuredbauth.Messages
 import com.github.snuxoll.intellij.azuredbauth.database.AZURE_AUTH_TYPE_KEY
 import com.github.snuxoll.intellij.azuredbauth.database.AuthType
+import com.github.snuxoll.intellij.azuredbauth.database.AzureAuthProvider
 import com.github.snuxoll.intellij.azuredbauth.settings.AzureAuthSettings
 import com.github.snuxoll.intellij.azuredbauth.ui.AuthTypeComboRenderer
 import com.github.snuxoll.intellij.azuredbauth.ui.extensions.anchorLeft
@@ -12,6 +13,7 @@ import com.github.snuxoll.intellij.azuredbauth.ui.extensions.sizeFor
 import com.intellij.database.access.DatabaseCredentials
 import com.intellij.database.dataSource.DatabaseAuthProvider
 import com.intellij.database.dataSource.DatabaseConnectionConfig
+import com.intellij.database.dataSource.DatabaseConnectionInterceptor
 import com.intellij.database.dataSource.url.template.MutableParametersHolder
 import com.intellij.database.dataSource.url.template.ParametersHolder
 import com.intellij.openapi.observable.properties.AtomicProperty
@@ -34,8 +36,9 @@ class AzureAuthWidget(
     DatabaseAuthProvider.AuthWidget {
 
     private val model = Model(
-        projectSettings.authType,
-        config.dataSource.username ?: ""
+        config.getAdditionalProperty(AZURE_AUTH_TYPE_KEY)?.let { AuthType.valueOf(it) }
+            ?: projectSettings.authType,
+        config.dataSource.username
     )
 
     private val projectSettings get() = AzureAuthSettings.getInstance(project!!)
@@ -45,6 +48,7 @@ class AzureAuthWidget(
     private val credentialPanels = mapOf(
         AuthType.DEFAULT to DefaultCredentialPanel(model.usernameProperty),
         AuthType.AZURE_CLI to AzureCLICredentialPanel(model.usernameProperty),
+        AuthType.INTERACTIVE to InteractiveCredentialPanel(model.usernameProperty),
         AuthType.MANAGED_IDENTITY to ManagedIdentityCredentialPanel(),
         AuthType.SERVICE_PRINCIPAL to ServicePrincipalCredentialPanel()
     )
@@ -86,6 +90,8 @@ class AzureAuthWidget(
     override fun save(config: DatabaseConnectionConfig, copyCredentials: Boolean) {
         config.dataSource.username = model.username
         config.setAdditionalProperty(AZURE_AUTH_TYPE_KEY, model.authType.name)
+        val authProvider = DatabaseConnectionInterceptor.EP_NAME.findExtension(AzureAuthProvider::class.java)
+        authProvider?.clearCredentials(config)
     }
 
     override fun getComponent(): JComponent = panel
