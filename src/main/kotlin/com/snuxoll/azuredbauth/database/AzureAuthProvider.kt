@@ -53,7 +53,6 @@ class AzureAuthProvider : DatabaseAuthProvider {
         connectionPoint: DatabaseConnectionPoint,
         authType: AuthType
     ): TokenCredential {
-        val connectionId = connectionPoint.dataSource.uniqueId
         return when (authType) {
             AuthType.DEFAULT -> getDefaultAzureCredentials(connectionPoint)
             AuthType.AZURE_CLI -> getAzureCLICredentials(connectionPoint)
@@ -126,10 +125,3 @@ class AzureAuthProvider : DatabaseAuthProvider {
 
 private val tokenRequestContext =
     TokenRequestContext().setScopes(listOf("https://ossrdbms-aad.database.windows.net/.default"))
-
-private val authTypeMap = mapOf(
-    AuthType.DEFAULT to DefaultAzureCredential::class,
-    AuthType.AZURE_CLI to AzureCliCredential::class,
-    AuthType.MANAGED_IDENTITY to ManagedIdentityCredential::class,
-    AuthType.SERVICE_PRINCIPAL to UsernamePasswordCredential::class
-)

@@ -30,7 +30,7 @@ import javax.swing.JPanel
 @Suppress("UnstableApiUsage")
 class AzureAuthWidget(
     private val project: Project?,
-    credentials: DatabaseCredentials,
+    @Suppress("UNUSED_PARAMETER") credentials: DatabaseCredentials,
     config: DatabaseConnectionConfig
 ) :
     DatabaseAuthProvider.AuthWidget {
