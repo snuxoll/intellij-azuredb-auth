@@ -2,6 +2,7 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.models.ProductRelease
 
 plugins {
     id("java") // Java support
@@ -95,6 +96,7 @@ intellijPlatform {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
             untilBuild = providers.gradleProperty("pluginUntilBuild")
         }
+
     }
 
     signing {
@@ -113,8 +115,12 @@ intellijPlatform {
 
     pluginVerification {
         ides {
-            ProductReleasesValueSource {
-                types.add(IntelliJPlatformType.DataGrip)
+            recommended()
+            select {
+                types = listOf(IntelliJPlatformType.DataGrip)
+                channels = listOf(ProductRelease.Channel.RELEASE, ProductRelease.Channel.EAP)
+                sinceBuild = intellijPlatform.pluginConfiguration.ideaVersion.sinceBuild
+                untilBuild = intellijPlatform.pluginConfiguration.ideaVersion.untilBuild
             }
         }
     }
