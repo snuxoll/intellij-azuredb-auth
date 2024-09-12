@@ -1,6 +1,6 @@
-package com.github.snuxoll.intellij.azuredbauth.ui
+package com.snuxoll.azuredbauth.ui
 
-import com.github.snuxoll.intellij.azuredbauth.database.AuthType
+import com.snuxoll.azuredbauth.database.AuthType
 import java.awt.Component
 import javax.swing.DefaultListCellRenderer
 import javax.swing.JList

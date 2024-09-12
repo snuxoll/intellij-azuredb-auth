@@ -1,15 +1,15 @@
-package com.github.snuxoll.intellij.azuredbauth.database.widget
+package com.snuxoll.azuredbauth.database.widget
 
-import com.github.snuxoll.intellij.azuredbauth.Messages
-import com.github.snuxoll.intellij.azuredbauth.database.AZURE_AUTH_TYPE_KEY
-import com.github.snuxoll.intellij.azuredbauth.database.AuthType
-import com.github.snuxoll.intellij.azuredbauth.database.AzureAuthProvider
-import com.github.snuxoll.intellij.azuredbauth.settings.AzureAuthSettings
-import com.github.snuxoll.intellij.azuredbauth.ui.AuthTypeComboRenderer
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.anchorLeft
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.fillHorizontal
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.gridConstraints
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.sizeFor
+import com.snuxoll.azuredbauth.Messages
+import com.snuxoll.azuredbauth.database.AZURE_AUTH_TYPE_KEY
+import com.snuxoll.azuredbauth.database.AuthType
+import com.snuxoll.azuredbauth.database.AzureAuthProvider
+import com.snuxoll.azuredbauth.settings.AzureAuthSettings
+import com.snuxoll.azuredbauth.ui.AuthTypeComboRenderer
+import com.snuxoll.azuredbauth.ui.extensions.anchorLeft
+import com.snuxoll.azuredbauth.ui.extensions.fillHorizontal
+import com.snuxoll.azuredbauth.ui.extensions.gridConstraints
+import com.snuxoll.azuredbauth.ui.extensions.sizeFor
 import com.intellij.database.access.DatabaseCredentials
 import com.intellij.database.dataSource.DatabaseAuthProvider
 import com.intellij.database.dataSource.DatabaseConnectionConfig

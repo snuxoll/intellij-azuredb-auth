@@ -1,6 +1,6 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.snuxoll.intellij.azuredbauth</id>
+    <id>com.snuxoll.azuredbauth</id>
     <name>Azure Database Authentication</name>
     <vendor>Stefan Nuxoll</vendor>
 
@@ -9,15 +9,15 @@
 
     <extensions defaultExtensionNs="com.intellij.database">
         <!--suppress PluginXmlValidity -->
-        <connectionInterceptor implementation="com.github.snuxoll.intellij.azuredbauth.database.AzureAuthProvider"
+        <connectionInterceptor implementation="com.snuxoll.azuredbauth.database.AzureAuthProvider"
                                order="first"/>
     </extensions>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable
                 parentId="tools"
-                instance="com.github.snuxoll.intellij.azuredbauth.settings.AzureAuthConfigurable"
-                id="com.github.snuxoll.intellij.azuredbauth.settings.AzureAuthConfigurable"
+                instance="com.snuxoll.azuredbauth.settings.AzureAuthConfigurable"
+                id="com.snuxoll.azuredbauth.settings.AzureAuthConfigurable"
                 key="displayName"/>
     </extensions>
 

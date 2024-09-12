@@ -1,4 +1,4 @@
-package com.github.snuxoll.intellij.azuredbauth
+package com.snuxoll.azuredbauth
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

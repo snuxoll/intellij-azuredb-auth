@@ -1,9 +1,9 @@
-package com.github.snuxoll.intellij.azuredbauth.database.widget
+package com.snuxoll.azuredbauth.database.widget
 
-import com.github.snuxoll.intellij.azuredbauth.Messages
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.anchorLeft
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.gridConstraints
-import com.github.snuxoll.intellij.azuredbauth.ui.extensions.sizeFor
+import com.snuxoll.azuredbauth.Messages
+import com.snuxoll.azuredbauth.ui.extensions.anchorLeft
+import com.snuxoll.azuredbauth.ui.extensions.gridConstraints
+import com.snuxoll.azuredbauth.ui.extensions.sizeFor
 import com.intellij.openapi.observable.properties.AtomicProperty
 import com.intellij.openapi.observable.util.bind
 import com.intellij.ui.components.JBLabel

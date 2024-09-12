@@ -1,10 +1,10 @@
-package com.github.snuxoll.intellij.azuredbauth.database
+package com.snuxoll.azuredbauth.database
 
 import com.azure.core.credential.TokenCredential
 import com.azure.core.credential.TokenRequestContext
 import com.azure.identity.*
-import com.github.snuxoll.intellij.azuredbauth.Messages
-import com.github.snuxoll.intellij.azuredbauth.database.widget.AzureAuthWidget
+import com.snuxoll.azuredbauth.Messages
+import com.snuxoll.azuredbauth.database.widget.AzureAuthWidget
 import com.intellij.credentialStore.Credentials
 import com.intellij.database.Dbms
 import com.intellij.database.access.DatabaseCredentials

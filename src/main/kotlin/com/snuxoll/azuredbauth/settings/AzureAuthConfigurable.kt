@@ -1,8 +1,8 @@
-package com.github.snuxoll.intellij.azuredbauth.settings
+package com.snuxoll.azuredbauth.settings
 
-import com.github.snuxoll.intellij.azuredbauth.Messages
-import com.github.snuxoll.intellij.azuredbauth.database.AuthType
-import com.github.snuxoll.intellij.azuredbauth.ui.AuthTypeComboRenderer
+import com.snuxoll.azuredbauth.Messages
+import com.snuxoll.azuredbauth.database.AuthType
+import com.snuxoll.azuredbauth.ui.AuthTypeComboRenderer
 import com.intellij.openapi.options.BoundSearchableConfigurable
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogPanel

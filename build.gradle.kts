@@ -2,10 +2,6 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
-extra {
-    var azureVersion = providers.gradleProperty("versions.azure")
-}
-
 plugins {
     id("java") // Java support
     alias(libs.plugins.kotlin) // Kotlin support
@@ -43,7 +39,7 @@ dependencies {
     implementation(platform(libs.azure))
     implementation("com.azure:azure-identity")
     implementation(libs.reactorCoroutines) {
-        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-jvm")
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-core-jvm")
     }
     testImplementation(libs.junit)
 

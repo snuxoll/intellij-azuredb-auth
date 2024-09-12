@@ -1,4 +1,4 @@
-package com.github.snuxoll.intellij.azuredbauth.ui.extensions
+package com.snuxoll.azuredbauth.ui.extensions
 
 import com.intellij.uiDesigner.core.GridConstraints
 import java.awt.Dimension

@@ -1,6 +1,6 @@
-package com.github.snuxoll.intellij.azuredbauth.settings
+package com.snuxoll.azuredbauth.settings
 
-import com.github.snuxoll.intellij.azuredbauth.database.AuthType
+import com.snuxoll.azuredbauth.database.AuthType
 import com.intellij.openapi.components.*
 import com.intellij.openapi.project.Project
 

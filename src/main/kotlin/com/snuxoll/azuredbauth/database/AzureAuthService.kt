@@ -1,6 +1,5 @@
-package com.github.snuxoll.intellij.azuredbauth.database
+package com.snuxoll.azuredbauth.database
 
-import com.azure.identity.DefaultAzureCredential
 import com.azure.identity.DefaultAzureCredentialBuilder
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.logger

@@ -1,4 +1,4 @@
-package com.github.snuxoll.intellij.azuredbauth.database
+package com.snuxoll.azuredbauth.database
 
 enum class AuthType(val displayName: String, val enabled: Boolean = true) {
     DEFAULT("Default Authentication"),
