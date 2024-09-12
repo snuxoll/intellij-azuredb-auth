@@ -1,4 +1,4 @@
-package com.github.snuxoll.intellijazuredbauth.toolWindow
+package com.github.snuxoll.intellij.azuredbauth.toolWindow
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -8,8 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.snuxoll.intellijazuredbauth.MyBundle
-import com.github.snuxoll.intellijazuredbauth.services.MyProjectService
+import com.github.snuxoll.intellij.azuredbauth.Messages
+import com.github.snuxoll.intellij.azuredbauth.services.MyProjectService
 import javax.swing.JButton
 
 
@@ -32,12 +32,12 @@ class MyToolWindowFactory : ToolWindowFactory {
         private val service = toolWindow.project.service<MyProjectService>()
 
         fun getContent() = JBPanel<JBPanel<*>>().apply {
-            val label = JBLabel(MyBundle.message("randomLabel", "?"))
+            val label = JBLabel(Messages.message("randomLabel", "?"))
 
             add(label)
-            add(JButton(MyBundle.message("shuffle")).apply {
+            add(JButton(Messages.message("shuffle")).apply {
                 addActionListener {
-                    label.text = MyBundle.message("randomLabel", service.getRandomNumber())
+                    label.text = Messages.message("randomLabel", service.getRandomNumber())
                 }
             })
         }

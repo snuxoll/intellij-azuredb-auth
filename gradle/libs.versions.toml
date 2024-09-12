@@ -8,9 +8,13 @@ intelliJPlatform = "2.0.1"
 kotlin = "1.9.25"
 kover = "0.8.3"
 qodana = "2024.1.9"
+azure = "1.2.27"
+reactorCoroutines = "1.8.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+azure = { group = "com.azure", name = "azure-sdk-bom", version.ref = "azure" }
+reactorCoroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactor", version.ref = "reactorCoroutines" }
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }

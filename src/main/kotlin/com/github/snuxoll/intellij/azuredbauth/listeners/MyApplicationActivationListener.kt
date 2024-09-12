@@ -1,4 +1,4 @@
-package com.github.snuxoll.intellijazuredbauth.listeners
+package com.github.snuxoll.intellij.azuredbauth.listeners
 
 import com.intellij.openapi.application.ApplicationActivationListener
 import com.intellij.openapi.diagnostic.thisLogger

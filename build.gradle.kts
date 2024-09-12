@@ -2,6 +2,10 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
+extra {
+    var azureVersion = providers.gradleProperty("versions.azure")
+}
+
 plugins {
     id("java") // Java support
     alias(libs.plugins.kotlin) // Kotlin support
@@ -13,6 +17,10 @@ plugins {
 
 group = providers.gradleProperty("pluginGroup").get()
 version = providers.gradleProperty("pluginVersion").get()
+
+configurations {
+
+}
 
 // Set the JVM language level used to build the project.
 kotlin {
@@ -31,6 +39,12 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
+    val azureVersion = properties["versions.azure"]
+    implementation(platform(libs.azure))
+    implementation("com.azure:azure-identity")
+    implementation(libs.reactorCoroutines) {
+        exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-jvm")
+    }
     testImplementation(libs.junit)
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
@@ -126,6 +140,9 @@ kover {
 }
 
 tasks {
+    buildSearchableOptions {
+        enabled = false
+    }
     wrapper {
         gradleVersion = providers.gradleProperty("gradleVersion").get()
     }
